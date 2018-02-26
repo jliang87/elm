@@ -1,36 +1,30 @@
 version: "3"
 
 volumes:
-  api_db_data:
+  db_data:
 
 services:
-  webpage:
-    build: ./webpage
+  node:
+    build: ./node-elm
     working_dir: /code
-    command: mix phx.server
+    command: npm run dev
     volumes:
-      - ./webpage:/code
+      - ./node-elm:/code
     ports:
-      - "88:4000"
-
-  api:
-    build: ./api
-    working_dir: /code
-    command: mix phx.server
-    volumes:
-      - ./api:/code
-    ports:
-      - "4000:4000"
+      - "8001:8001"
     links:
-      - postgres:postgres.link
-
-  postgres:
-    image: postgres:9.6
+      - mongo
+  vue:
+    build: ./vue2-elm
+    working_dir: /code
+    command: npm run dev
     volumes:
-      - api_db_data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
-      POSTGRES_DB: database
+      - ./vue2-elm:/code
     ports:
-      - "5432:5432"
+      - "8000:8000"
+  mongo:
+    image: mongo:3.7
+    volumes:
+      - db_data:/data/db
+    ports:
+      - "27017:27017"
