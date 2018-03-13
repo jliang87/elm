@@ -1,4 +1,4 @@
-FROM node:8
+FROM node:6
 
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get -y update && \

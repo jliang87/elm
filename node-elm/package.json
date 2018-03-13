@@ -7,8 +7,8 @@
   "license": "GPL",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development supervisor --harmony index.js",
-    "local": "cross-env NODE_ENV=local supervisor  --harmony index.js",
+    "dev": "cross-env NODE_ENV=development supervisor --debug-brk --harmony index.js",
+    "local": "cross-env NODE_ENV=local supervisor --debug-brk --harmony index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env NODE_ENV=production pm2 start index.js --node-args='--harmony' --name 'node-elm'",
     "stop": "cross-env NODE_ENV=production pm2 stop index.js --name 'node-elm'",
@@ -54,9 +54,12 @@
     "winston": "^2.3.1"
   },
   "devDependencies": {
+    "ajv": "^6.2.1",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-es2015-classes": "^6.24.1",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
-    "babel-plugin-transform-export-extensions": "^6.22.0"
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "eslint": "^4.18.2",
+    "node-inspector": "^1.1.2"
   }
 }

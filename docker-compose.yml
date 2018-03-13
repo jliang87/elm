@@ -12,12 +12,13 @@ services:
       - ./node-elm:/code
     ports:
       - "8001:8001"
+      - "5858:5858"
     links:
       - mongo
   vue:
     build: ./vue2-elm
     working_dir: /code
-    command: npm run dev
+    command: npm run local
     volumes:
       - ./vue2-elm:/code
     ports:
