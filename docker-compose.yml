@@ -23,6 +23,8 @@ services:
       - ./vue2-elm:/code
     ports:
       - "8000:8000"
+    links:
+      - node
   mongo:
     image: mongo:3.7
     volumes:

@@ -7,8 +7,8 @@
   "license": "GPL",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development supervisor --debug-brk --harmony index.js",
-    "local": "cross-env NODE_ENV=local supervisor --debug-brk --harmony index.js",
+    "dev": "cross-env NODE_ENV=development supervisor --debug --harmony index.js",
+    "local": "cross-env NODE_ENV=local supervisor --debug --harmony index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env NODE_ENV=production pm2 start index.js --node-args='--harmony' --name 'node-elm'",
     "stop": "cross-env NODE_ENV=production pm2 stop index.js --name 'node-elm'",
